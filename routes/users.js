@@ -97,4 +97,12 @@ router.delete("/:email", (req, res) => {
     res.send(`user with email ${email} is succeffully deleted`);
 });
 
+router.get("/lastName/:lastName", (req, res) => {
+    const lastName = req.params.lastName;
+    users = users.filter(user => user.lastName===lastName);
+    res.send(users);
+    
+
+});
+
 module.exports=router;
