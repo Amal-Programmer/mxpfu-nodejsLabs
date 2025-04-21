@@ -105,4 +105,19 @@ router.get("/lastName/:lastName", (req, res) => {
 
 });
 
+
+// Function to convert a date string in the format "dd-mm-yyyy" to a Date object
+const toDate = (DOB)=>{
+    let [day,month,year] = DOB.split('-');
+    DOB = new Date(year + '-' + month + '-' + day);
+    return DOB;
+}
+// Define a route handler for GET requests to the "/sort" endpoint
+router.get("/sort/sorting", (req,res)=>{
+     // Sort the users array by DOB in ascending order
+    users.sort((a,b)=> toDate(a.DOB)-toDate(b.DOB));
+    res.send(users);  
+});
+
+
 module.exports=router;
